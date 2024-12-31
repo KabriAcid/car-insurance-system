@@ -1,0 +1,6 @@
+CAR INSURANCE SYSTEM GUIDE BOOK
+
+- Need for communication between manager and user
+- There is a need for inventory of insurance packages
+- Login inteface for users to register and backend for managing packages
+- 
