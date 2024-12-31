@@ -1,3 +1,16 @@
 :root {
+    /* CSS HEX */
+--smoky-black: #100b00ff;
+--yellow-green: #85cb33ff;
+--nyanza: #efffc8ff;
+--ash-gray: #a5cbc3ff;
+--drab-dark-brown: #3b341fff;
+
+/* CSS HSL */
+--smoky-black: hsla(41, 100%, 3%, 1);
+--yellow-green: hsla(88, 60%, 50%, 1);
+--nyanza: hsla(77, 100%, 89%, 1);
+--ash-gray: hsla(167, 27%, 72%, 1);
+--drab-dark-brown: hsla(45, 31%, 18%, 1);
     
 }
