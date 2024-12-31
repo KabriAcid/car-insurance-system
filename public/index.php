@@ -17,9 +17,12 @@
         <div class="container p-5">
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <div class="col-9 col-md-8 col-lg-6">
-                        <form action="/scripts/process.php" class="shadow-lg p-4" method="post">
-                            <h2 class="text-center mb-5 header">Log in with your details</h2>
+                    <div class="col-md-8 col-lg-6">
+                        <form action="../scripts/process.php" class="shadow-lg p-4 rounded-3" method="post">
+                            <div class="mb-5">
+                                <h2 class="text-center header">Log in with your details</h2>
+                                <p class="text-center text-sm gray-800">Enter your appropriate details</p>
+                            </div>
                             <div class="mb-3">
                                 <input type="email" placeholder="Email" class="form-control" id="email" name="email" required>
                             </div>
@@ -27,7 +30,7 @@
                                 <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn-submit text-white w-100">Log in</button>
-                            <p class="text-center mt-3">Don't have an account? <a href="/scripts/register.php">Register</a></p>
+                            <p class="text-center mt-3">Don't have an account? <a href="../scripts/register.php">Register</a></p>
                         </form>
                     </div>
                 </div>
