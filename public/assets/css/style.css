@@ -53,6 +53,85 @@
 .bg-gray-800 { background-color: var(--gray-800); }
 .bg-gray-900 { background-color: var(--gray-900); }
 
+/* COMPONENTS */
+
+/* Default Link */
+a {
+    color: var(--yellow-green);
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* Link Hover State */
+a:hover {
+    color: var(--smoky-black);
+    border-bottom: 1px solid var(--yellow-green);
+}
+
+/* Link Active State */
+a:active {
+    color: var(--drab-dark-brown);
+}
+
+/* Link Visited State */
+a:visited {
+    color: var(--ash-gray);
+}
+
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid var(--gray-400);
+    border-radius: 5px;
+}
+
+.input-field:focus {
+    border-color: var(--yellow-green);
+    outline: none;
+    box-shadow: 0 0 5px rgba(133, 203, 51, 0.5);
+  }
+  
+.input-field:disabled {
+  background-color: var(--gray-200);
+  cursor: not-allowed;
+}
+
+.btn-submit {
+  background-color: var(--smoky-black);
+  color: var(--gray-800);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  box-shadow: 0 0 5px rgba(133, 203, 51, 0.5);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+    background-color: var(--gray-400);
+    color: var(--gray-100);
+    cursor: not-allowed;
+}
+
+.header {
+    color: var(--gray-900);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-weight: 600;
+}
+
+
 
 * {
   padding: 0;
