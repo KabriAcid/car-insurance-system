@@ -1,1 +1,48 @@
 
+# Ignore the configuration file
+Config/config.php
+
+# Ignore environment and credentials files
+.env
+
+# Ignore system-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+logs/
+error_log
+
+# Ignore cache files
+.cache/
+tmp/
+*.tmp
+
+# Ignore IDE/editor-specific files
+*.idea/
+*.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore OS-specific files
+*.swp
+*.lock
+__MACOSX/
+
+# Ignore uploads and temporary data (if applicable)
+uploads/
+storage/
+backup/
+
+# Ignore database exports or backups
+*.sql
+*.sqlite
+*.db
+
+# Ignore compiled JavaScript and CSS files
+public/js/*.min.js
+public/css/*.min.css
+
+# Ignore user-generated content
+public/uploads/
