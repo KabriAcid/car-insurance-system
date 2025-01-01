@@ -27,7 +27,7 @@ session_start();
         <div class="container">
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <div class="col-md-8 col-lg-9">
+                    <div class="col-lg-9">
                         <div class="text-center">
                             <?php
                             if (isset($_SESSION['message'])) {
@@ -44,23 +44,23 @@ session_start();
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="first_name" placeholder="First Name" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="first_name" placeholder="First Name" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="last_name" placeholder="Last Name" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="last_name" placeholder="Last Name" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="date" name="date_of_birth" placeholder="Date of Birth" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="date" name="date_of_birth" placeholder="Date of Birth" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="address" placeholder="Address" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="address" placeholder="Address" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="email" name="email" placeholder="Email" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="email" name="email" placeholder="Email" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="tel" name="phone_number" placeholder="Phone Number" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="tel" name="phone_number" placeholder="Phone Number" class="input-field form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -72,23 +72,23 @@ session_start();
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="make" placeholder="Make" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="make" placeholder="Make" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="model" placeholder="Model" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="model" placeholder="Model" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="year_of_manufacture" placeholder="Year of Manufacture" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="year_of_manufacture" placeholder="Year of Manufacture" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="vin" placeholder="Vehicle Identification Number (VIN)" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="vin" placeholder="Vehicle Identification Number (VIN)" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="license_plate_number" placeholder="License Plate Number" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="license_plate_number" placeholder="License Plate Number" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="number" name="current_mileage" placeholder="Current Mileage" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="number" name="current_mileage" placeholder="Current Mileage" class="input-field form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -100,11 +100,11 @@ session_start();
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="drivers_license_number" placeholder="Driver's License Number" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="drivers_license_number" placeholder="Driver's License Number" class="input-field form-control" required>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" name="driving_experience" placeholder="Driving Experience (Years)" class="input-field form-control">
+                                            <div class="col-lg-6 mb-3">
+                                                <input type="text" name="driving_experience" placeholder="Driving Experience (Years)" class="input-field form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -123,13 +123,14 @@ session_start();
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
-                                                <input type="password" name="password" placeholder="Password" class="input-field form-control">
+                                                <input type="password" name="password" placeholder="Password" class="input-field form-control" required>
                                             </div>
                                             <div class="col-md-12 mb-3">
-                                                <input type="password" name="confirm_password" placeholder="Confirm Password" class="input-field form-control">
+                                                <input type="password" name="confirm_password" placeholder="Confirm Password" class="input-field form-control" required>
                                             </div>
                                         </div>
                                     </div>
+                                    <p class="text-center mt-3">Already have an account? <a href="../public/index.php">Log in</a></p>
                                 </div>
                                 <!-- Navigation Buttons -->
                                 <div class="d-flex justify-content-between">
