@@ -1,5 +1,55 @@
 <?php
 session_start();
+require '../config/config.php';
+// Sanitize and validate input
+function sanitize_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if (isset($_POST['login'])) {
+    $email = sanitize_input($_POST["email"]);
+    $password = sanitize_input($_POST["password"]);
+
+    // Check if the user exists in the database
+    $sql = "SELECT * FROM users WHERE email = ?";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                // Password is correct, start a session
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['message'] = "Login successful!";
+                header("Location: ../pages/dashboard.php");
+            } else {
+                // Password is incorrect
+                $_SESSION['message'] = "Invalid email or password.";
+                header("Location: " . $_SERVER['PHP_SELF']);
+                exit();
+            }
+        } else {
+            // No user found with that email
+            $_SESSION['message'] = "Invalid email or password.";
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        }
+    } else {
+        // SQL statement preparation failed
+        $_SESSION['message'] = "Database error: " . $conn->error;
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +74,11 @@ session_start();
                         <div class="text-center">
                             <?php
                             if (isset($_SESSION['message'])) {
-                                echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
+                                echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
                                 unset($_SESSION['message']);
                             } ?>
                         </div>
-                        <form action="../scripts/process.php" class="shadow-lg p-4 rounded-3" method="post">
+                        <form action="<?= $_SERVER['PHP_SELF'] ?>" class="shadow-lg p-4 rounded-3" method="post">
                             <div class="mb-5">
                                 <h2 class="text-center header">Log in with your details</h2>
                                 <p class="text-center text-sm gray-800">Enter your appropriate details</p>

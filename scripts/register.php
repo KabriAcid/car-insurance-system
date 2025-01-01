@@ -35,106 +35,111 @@ session_start();
                                 unset($_SESSION['message']);
                             } ?>
                         </div>
-                        <form id="registration-form" class="shadow-lg p-4 rounded-3" method="post">
+                        <form class="shadow-lg p-4 rounded-3" method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
                             <!-- Personal Information -->
-                            <div class="card p-3 mb-3 shadow-md border-0 bg-light">
-                                <div class="">
-                                    <h5>Personal Information</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="first_name" placeholder="First Name" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="last_name" placeholder="Last Name" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="date" name="date_of_birth" placeholder="Date of Birth" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="address" placeholder="Address" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="email" name="email" placeholder="Email" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="tel" name="phone_number" placeholder="Phone Number" class="input-field form-control">
+                            <div id="registration-form">
+                                <div class="card p-3 mb-3 shadow-md border-0 bg-light">
+                                    <div class="">
+                                        <h5>Personal Information</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="first_name" placeholder="First Name" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="last_name" placeholder="Last Name" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="date" name="date_of_birth" placeholder="Date of Birth" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="address" placeholder="Address" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="email" name="email" placeholder="Email" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="tel" name="phone_number" placeholder="Phone Number" class="input-field form-control">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Vehicle Information -->
-                            <div class="card p-3 mb-3 shadow-md border-0 bg-light">
-                                <div class="">
-                                    <h5>Vehicle Information</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="make" placeholder="Make" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="model" placeholder="Model" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="year_of_manufacture" placeholder="Year of Manufacture" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="vin" placeholder="Vehicle Identification Number (VIN)" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="license_plate_number" placeholder="License Plate Number" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="number" name="current_mileage" placeholder="Current Mileage" class="input-field form-control">
+                                <!-- Vehicle Information -->
+                                <div class="card p-3 mb-3 shadow-md border-0 bg-light">
+                                    <div class="">
+                                        <h5>Vehicle Information</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="make" placeholder="Make" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="model" placeholder="Model" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="year_of_manufacture" placeholder="Year of Manufacture" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="vin" placeholder="Vehicle Identification Number (VIN)" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="license_plate_number" placeholder="License Plate Number" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="number" name="current_mileage" placeholder="Current Mileage" class="input-field form-control">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Driving Information -->
-                            <div class="card p-3 mb-3 shadow-md border-0 bg-light">
-                                <div class="">
-                                    <h5>Driving Information</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="drivers_license_number" placeholder="Driver's License Number" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" name="driving_experience" placeholder="Driving Experience (Years)" class="input-field form-control">
+                                <!-- Driving Information -->
+                                <div class="card p-3 mb-3 shadow-md border-0 bg-light">
+                                    <div class="">
+                                        <h5>Driving Information</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="drivers_license_number" placeholder="Driver's License Number" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" name="driving_experience" placeholder="Driving Experience (Years)" class="input-field form-control">
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" id="back-button" class="btn btn-secondary d-none">Back</button>
+                                    <button type="button" id="next-button" class="btn btn-primary">Next</button>
                                 </div>
                             </div>
 
-                            <!-- Navigation Buttons -->
-                            <div class="d-flex justify-content-between">
-                                <button type="button" id="back-button" class="btn btn-secondary d-none">Back</button>
-                                <button type="button" id="next-button" class="btn btn-primary">Next</button>
-                            </div>
-                        </form>
-                        <!-- Password Form -->
-                        <form id="password-form" action="process.php" method="post" class="shadow-lg p-4 rounded-3 d-none">
-                            <div class="card mb-3 border-0 bg-light">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12 mb-3">
-                                            <input type="password" name="password" placeholder="Password" class="input-field form-control">
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <input type="password" name="confirm_password" placeholder="Confirm Password" class="input-field form-control">
+                            <!-- Password Form -->
+                            <div id="password-form" class="p-4 d-none">
+                                <div class="card mb-3 border-0 bg-light">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-3">
+                                                <input type="password" name="password" placeholder="Password" class="input-field form-control">
+                                            </div>
+                                            <div class="col-md-12 mb-3">
+                                                <input type="password" name="confirm_password" placeholder="Confirm Password" class="input-field form-control">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Navigation Buttons -->
-                            <div class="d-flex justify-content-between">
-                                <button type="button" id="back-button-pwd" class="btn btn-secondary">Back</button>
-                                <button type="submit" name="register" class="btn-submit text-light">Submit</button>
+                                <!-- Navigation Buttons -->
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" id="back-button-pwd" class="btn btn-secondary">Back</button>
+                                    <button type="submit" name="register" class="btn-submit text-light">Submit</button>
+                                </div>
                             </div>
                         </form>
+
+
                         <!-- Pagination Text -->
                         <div id="pagination-text" class="pagination-text">
                             <h6 style="font-weight: 700;">1/2</h6>
