@@ -28,11 +28,13 @@ session_start();
             <div class="row">
                 <div class="d-flex justify-content-center">
                     <div class="col-md-8 col-lg-9">
-                        <?php
-                        if (isset($_SESSION['message'])) {
-                            echo '<div class="alert alert-info">' . $_SESSION['message'] . '</div>';
-                            unset($_SESSION['message']);
-                        } ?>
+                        <div class="text-center">
+                            <?php
+                            if (isset($_SESSION['message'])) {
+                                echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
+                                unset($_SESSION['message']);
+                            } ?>
+                        </div>
                         <form id="registration-form" class="shadow-lg p-4 rounded-3" method="post">
                             <!-- Personal Information -->
                             <div class="card p-3 mb-3 shadow-md border-0 bg-light">
@@ -114,7 +116,7 @@ session_start();
                             </div>
                         </form>
                         <!-- Password Form -->
-                        <form id="password-form" action="../scripts/process.php" method="post" class="shadow-lg p-4 rounded-3 d-none">
+                        <form id="password-form" action="" method="post" class="shadow-lg p-4 rounded-3 d-none">
                             <div class="card mb-3 border-0 bg-light">
                                 <div class="card-body">
                                     <div class="row">
@@ -130,7 +132,7 @@ session_start();
                             <!-- Navigation Buttons -->
                             <div class="d-flex justify-content-between">
                                 <button type="button" id="back-button-pwd" class="btn btn-secondary">Back</button>
-                                <button type="submit" name="register" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="register" class="btn-submit text-light">Submit</button>
                             </div>
                         </form>
                         <!-- Pagination Text -->
@@ -178,16 +180,6 @@ session_start();
                 document.getElementById('registration-form').classList.remove('d-none');
                 currentStep--;
                 updatePaginationText();
-            }
-        });
-        // Password matching functionality
-        document.getElementById('submit-button').addEventListener('click', function(event) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            if (password !== confirmPassword) {
-                event.preventDefault();
-                // Prevent form submission
-                alert("Passwords do not match. Please try again.");
             }
         });
 

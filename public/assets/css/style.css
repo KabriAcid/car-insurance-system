@@ -112,10 +112,7 @@ a:visited {
 
 .btn-submit:hover {
   box-shadow: 0 0 5px rgba(133, 203, 51, 0.5);
-}
-
-.btn-submit:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .btn-submit:disabled {

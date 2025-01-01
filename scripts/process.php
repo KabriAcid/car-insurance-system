@@ -32,7 +32,7 @@ if (isset($_POST['register'])) {
     // Password validation
     if ($password !== $confirm_password) {
         $_SESSION['message'] = "Passwords do not match.";
-        header("Location: /path/to/form.html"); // Redirect back to form
+        header("Location: " . $_SERVER['HTTP_REFERER']); // Redirect back to the same page
         exit();
     }
 
