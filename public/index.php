@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../config/config.php';
+
 // Sanitize and validate input
 function sanitize_input($data)
 {
@@ -27,10 +28,10 @@ if (isset($_POST['login'])) {
             // Verify password
             if (password_verify($password, $user['password'])) {
                 // Password is correct, start a session
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['email'] = $user['email'];
+                $_SESSION['user'] = $user; // Store user details in session
                 $_SESSION['message'] = "Login successful!";
                 header("Location: ../pages/dashboard.php");
+                exit();
             } else {
                 // Password is incorrect
                 $_SESSION['message'] = "Invalid email or password.";
@@ -39,7 +40,7 @@ if (isset($_POST['login'])) {
             }
         } else {
             // No user found with that email
-            $_SESSION['message'] = "Invalid email or password.";
+            $_SESSION['message'] = "Invalid email.";
             header("Location: " . $_SERVER['PHP_SELF']);
             exit();
         }
@@ -51,6 +52,7 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,12 +86,12 @@ if (isset($_POST['login'])) {
                                 <p class="text-center text-sm gray-800">Enter your appropriate details</p>
                             </div>
                             <div class="mb-3">
-                                <input type="email" placeholder="Email" class="form-control" id="email" name="email" required>
+                                <input type="email" placeholder="Email" class="form-control input-field" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
+                                <input type="password" placeholder="Password" class="form-control input-field" name="password" required>
                             </div>
-                            <button type="submit" class="btn-submit text-white w-100">Log in</button>
+                            <button type="submit" name="login" class="btn-submit text-white w-100">Log in</button>
                             <p class="text-center mt-3">Don't have an account? <a href="../scripts/register.php">Register</a></p>
                         </form>
                     </div>

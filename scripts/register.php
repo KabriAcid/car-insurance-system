@@ -35,7 +35,7 @@ session_start();
                                 unset($_SESSION['message']);
                             } ?>
                         </div>
-                        <form class="shadow-lg p-4 rounded-3" method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
+                        <form class="shadow-lg p-4 rounded-3" method="post" action="process.php">
                             <!-- Personal Information -->
                             <div id="registration-form">
                                 <div class="card p-3 mb-3 shadow-md border-0 bg-light">
