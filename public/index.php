@@ -18,6 +18,13 @@
             <div class="row">
                 <div class="d-flex justify-content-center">
                     <div class="col-md-8 col-lg-6">
+                        <div class="text-center">
+                            <?php
+                            if (isset($_SESSION['message'])) {
+                                echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
+                                unset($_SESSION['message']);
+                            } ?>
+                        </div>
                         <form action="../scripts/process.php" class="shadow-lg p-4 rounded-3" method="post">
                             <div class="mb-5">
                                 <h2 class="text-center header">Log in with your details</h2>

@@ -31,7 +31,7 @@ session_start();
                         <div class="text-center">
                             <?php
                             if (isset($_SESSION['message'])) {
-                                echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
+                                echo '<div class="alert alert-info">' . $_SESSION['message'] . '</div>';
                                 unset($_SESSION['message']);
                             } ?>
                         </div>
@@ -116,7 +116,7 @@ session_start();
                             </div>
                         </form>
                         <!-- Password Form -->
-                        <form id="password-form" action="" method="post" class="shadow-lg p-4 rounded-3 d-none">
+                        <form id="password-form" action="process.php" method="post" class="shadow-lg p-4 rounded-3 d-none">
                             <div class="card mb-3 border-0 bg-light">
                                 <div class="card-body">
                                     <div class="row">
