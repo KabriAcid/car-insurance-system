@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['message'] = "Login successful!";
-                header("Location: ../public/index.php");
+                header("Location: ../pages/dashboard.php");
             } else {
                 // Password is incorrect
                 $_SESSION['message'] = "Invalid email or password.";
@@ -50,6 +50,7 @@ if (isset($_POST['login'])) {
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }
+}
 
 
 // Process form data
@@ -94,5 +95,4 @@ if (isset($_POST['register'])) {
         header("Location: " . $_SERVER['PHP_SELF']); // Corrected typo: SERVER_SELF to PHP_SELF
         exit();
     }
-
 }
