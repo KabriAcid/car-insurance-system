@@ -2,7 +2,7 @@
 Car Insurance Management system
 
 # ERD
-// note: forgot to put password in the client table
+// note: forgot to put password in the client tables
 ![ERD](https://github.com/HyGlobalHD/car-insurance-web/blob/main/res/ERD%20LATEST%20FIXED.jpg?raw=true)
 
 # Data Dictionary
