@@ -220,13 +220,6 @@ CREATE TABLE policies (
     premium DECIMAL(10, 2) NOT NULL,
     coverage VARCHAR(100) NOT NULL
 );
-CREATE TABLE policies (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT NOT NULL,
-    premium DECIMAL(10, 2) NOT NULL,
-    coverage VARCHAR(100) NOT NULL
-);
 CREATE TABLE purchase_policy (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
