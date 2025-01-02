@@ -212,3 +212,28 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE policies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    premium DECIMAL(10, 2) NOT NULL,
+    coverage VARCHAR(100) NOT NULL
+);
+CREATE TABLE policies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    premium DECIMAL(10, 2) NOT NULL,
+    coverage VARCHAR(100) NOT NULL
+);
+CREATE TABLE purchase_policy (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO policies ( name, description, premium, coverage) VALUES
+(1, 'Basic Plan', 'Covers minimal accidents and injuries', 100.00, 'Up to ₦5,000'),
+(1, 'Standard Plan', 'Covers accidents and property damage', 200.00, 'Up to ₦15,000'),
+(2, 'Premium Plan', 'Covers all risks including theft and fire', 500.00, 'Up to ₦50,000');
+
