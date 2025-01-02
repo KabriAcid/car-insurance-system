@@ -2,8 +2,8 @@
 // Database connection
 $servername = "localhost";
 $username = "root";
-$password = "Moussamj9$";
-$dbname = "scheema";
+$password = "";
+$dbname = "insurance_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

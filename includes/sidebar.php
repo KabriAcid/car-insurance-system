@@ -13,7 +13,7 @@
         <li><a href="renew_policy.php"><i class="bi bi-arrow-repeat"></i> Renew Policy</a></li>
         <li><a href="policy_applications.php"><i class="bi bi-file-earmark-text"></i> Policy Applications</a></li>
         
-        <li><a href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+        <li><a href="../scripts/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
     </ul>
 </div>
 

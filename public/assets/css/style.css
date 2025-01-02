@@ -73,11 +73,6 @@ a:active {
     color: var(--drab-dark-brown);
 }
 
-/* Link Visited State */
-a:visited {
-    color: var(--ash-gray);
-}
-
 
 .input-field {
     width: 100%;

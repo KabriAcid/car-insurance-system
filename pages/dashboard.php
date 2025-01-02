@@ -16,10 +16,10 @@ session_start();
 </head>
 
 <body>
-<?php
-include '../includes/header.php';
+    <?php
+    include '../includes/header.php';
 
-?>
+    ?>
 
     <main class="container-fluid py-5 bg-light">
         <div class="container p-5">
@@ -39,7 +39,7 @@ include '../includes/header.php';
                         <div class="shadow-lg p-4 rounded-3 bg-white">
                             <h3 class="text-center mb-3">User Actions</h3>
                             <ul class="list-group">
-                            <li class="list-group-item"><a href="../pages/policies.php">View Policies</a></li>
+                                <li class="list-group-item"><a href="../pages/policies.php">View Policies</a></li>
                                 <li class="list-group-item"><a href="../pages/claims.php">Manage Claims</a></li>
                                 <li class="list-group-item"><a href="../pages/policy_applications.php">Policy Application</a></li>
                                 <li class="list-group-item"><a href="../pages/profile.php">Update Profile</a></li>
@@ -55,8 +55,8 @@ include '../includes/header.php';
         </div>
     </main>
     <?php
-include '../includes/footer.php';
-?>
+    include '../includes/footer.php';
+    ?>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
