@@ -77,6 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .table-responsive {
             max-width: 100%;
         }
+        th:not(:first-child) {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -91,13 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <h2 class="header">Available Policies</h2>
                         <p class="text-sm text-muted">Browse and apply for an insurance policy below.</p>
                     </div>
-                    <!-- Display Session Message -->
-                    <?php
-                    if (isset($_SESSION['message'])) {
-                        echo '<div class="alert alert-info">' . htmlspecialchars($_SESSION['message']) . '</div>';
-                        unset($_SESSION['message']);
-                    }
-                    ?>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>
