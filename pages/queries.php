@@ -1,9 +1,11 @@
 <?php
 require '../config/config.php';
 
-$sql = "CREATE TABLE purchase(
-    id INT AUTO_INCREMENT PRIMARY KEY
-)";
+$sql = "ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') DEFAULT 'user',
+INSERT INTO users (name, email, password, role) 
+VALUES ('Admin User', 'admin123@gmail.com', MD5('password123'), 'admin');
+
+";
 
 if ($conn->query($sql)) {
 ?>

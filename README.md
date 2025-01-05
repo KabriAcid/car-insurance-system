@@ -90,5 +90,6 @@ styles.css – Main stylesheet for the website.
 admin.css – Styles specific to the admin panel.
 
 ### Note
-- This is super beautiful, Kudos!!!!!!
-- Thank you sir
+Admin Credencial
+-admin123@gmail.com
+-password123

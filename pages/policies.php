@@ -5,7 +5,7 @@ require '../config/config.php';
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
     $_SESSION['message'] = "You must log in to apply for policies.";
-    header("Location: ../login.php");
+    header("Location: ../index.php");
     exit;
 }
 

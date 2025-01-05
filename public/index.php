@@ -3,8 +3,7 @@ session_start();
 require '../config/config.php';
 
 // Sanitize and validate input
-function sanitize_input($data)
-{
+function sanitize_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -30,8 +29,14 @@ if (isset($_POST['login'])) {
                 // Password is correct, start a session
                 $_SESSION['user'] = $user; // Store user details in session
                 $_SESSION['message'] = "Login successful!";
-                header("Location: ../pages/dashboard.php");
-                exit();
+
+                // Redirect user based on role
+                if ($user['role'] == 'admin') {
+                    header("Location: ../admin/admin_dashboard.php"); // Admin dashboard
+                } else {
+                    header("Location: ../pages/dashboard.php"); // Regular user dashboard
+                }
+                exit(); // Ensure no further code is executed
             } else {
                 // Password is incorrect
                 $_SESSION['message'] = "Invalid email or password.";
@@ -93,7 +98,9 @@ if (isset($_POST['login'])) {
                             </div>
                             <button type="submit" name="login" class="btn-submit text-white w-100">Log in</button>
                             <p class="text-center mt-3">Don't have an account? <a href="../scripts/register.php">Register</a></p>
+                            
                         </form>
+                        
                     </div>
                 </div>
             </div>
