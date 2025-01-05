@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         echo '<td>
                                             <form method="POST" action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '">
                                                 <input type="hidden" name="policy_id" value="' . htmlspecialchars($policy['id']) . '">
-                                                <button type="submit" class="btn btn-primary btn-sm" id="submit" name="submit" onclick="makePayment()">Apply</button>
+                                                <button type="button" class="btn btn-primary btn-sm" id="submit" name="submit" onclick="makePayment()">Apply</button>
                                             </form>
                                         </td>';
                                         echo "</tr>";
@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include '../includes/footer.php';
     // Six random digit number for transaction reference
     $tx_ref = 'PAY_ID' . rand(100000, 999999);
-    require '../src/pages/keys.php';
+    require '../scripts/keys.php';
     ?>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
