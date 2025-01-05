@@ -1,6 +1,6 @@
 
 # Ignore the configuration file
-config/config.php
+Config/config.php
 
 # Ignore environment and credentials files
 .env

@@ -2,109 +2,108 @@
 session_start();
 require '../config/config.php';
 
-// Ensure the user is logged in
+// Ensure the user is logged in before accessing the page
 if (!isset($_SESSION['user'])) {
-    header("Location: index.php");
+    $_SESSION['message'] = "You must log in to renew a policy.";
+    header("Location: ../login.php");
     exit();
 }
 
-// Fetch user information
-$user_id = $_SESSION['user']['id'];
-$sql = "SELECT * FROM policies WHERE user_id = ?"; // Assuming there's a relation between policies and users
+// Fetch the current user’s policies from the database
+$user_id = $_SESSION['user']['id'];  // Get user ID from session
+$sql = "SELECT * FROM policies WHERE id= ?";  // Ensure 'user_id' exists in the table
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$result = $stmt->get_result();
+$policies = $stmt->get_result();
+$stmt->close();
 
-// Fetch the user's policy details
-if ($result->num_rows > 0) {
-    $policy = $result->fetch_assoc();
-} else {
-    $_SESSION['message'] = "No policies found for your account.";
-    header("Location: dashboard.php");
-    exit();
-}
-
-// Renew policy logic
+// Handle policy renewal on form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $policy_id = intval($_POST['policy_id']);
     $renew_date = date("Y-m-d", strtotime('+1 year'));  // Renew the policy for one more year
 
     // Update the policy with the new renewal date
     $update_sql = "UPDATE policies SET renewal_date = ? WHERE id = ?";
     $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("si", $renew_date, $policy['id']);
+    $stmt->bind_param("si", $renew_date, $policy_id);
 
     if ($stmt->execute()) {
         $_SESSION['message'] = "Policy renewed successfully!";
+        header("Location: dashboard.php"); // Redirect to dashboard after success
+        exit();
     } else {
         $_SESSION['message'] = "Error renewing policy: " . $stmt->error;
+        header("Location: renew_policy.php"); // Stay on the renewal page if error occurs
+        exit();
     }
-
-    header("Location: renew_policy.php");
-    exit();
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renew Policy</title>
-    <!-- favicon -->
-    <link rel="icon" href="../public/favicon.png" type="image/x-icon">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/assets/css/style.css">
 </head>
-
 <body>
-<?php
-include '../includes/sidebar.php';
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar (you can include your sidebar here) -->
+            <?php include '../includes/sidebar.php'; ?>
 
-?>
-    <main class="container-fluid py-5 bg-light">
-        <div class="container p-5">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="header">Renew Your Policy</h2>
+            <!-- Main Content -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-4 py-5">
+                <h2 class="mb-4 text-center">Renew Policy</h2>
+                
+                <!-- Display Session Message -->
+                <?php
+                if (isset($_SESSION['message'])) {
+                    echo '<div class="alert alert-info">' . htmlspecialchars($_SESSION['message']) . '</div>';
+                    unset($_SESSION['message']);
+                }
+                ?>
 
-                    <?php
-                    if (isset($_SESSION['message'])) {
-                        echo '<div class="alert alert-info">' . $_SESSION['message'] . '</div>';
-                        unset($_SESSION['message']);
-                    }
-                    ?>
-
-                    <form method="POST" action="renew_policy.php">
-                        <div class="mb-3">
-                            <label for="policy_name" class="form-label">Policy Name</label>
-                            <input type="text" class="form-control" id="policy_name" name="policy_name" value="<?= htmlspecialchars($policy['name']) ?>" disabled>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Select Policy to Renew</h5>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="policy_premium" class="form-label">Policy Premium</label>
-                            <input type="text" class="form-control" id="policy_premium" name="policy_premium" value="$<?= htmlspecialchars($policy['premium']) ?>" disabled>
+                        <div class="card-body">
+                            <p>Choose one of your available policies to renew.</p>
+                            
+                            <!-- Dropdown to select a policy -->
+                            <div class="mb-3">
+                                <label for="policy_id" class="form-label">Select Policy</label>
+                                <select name="policy_id" id="policy_id" class="form-select" required>
+                                    <option value="" disabled selected>Select a policy</option>
+                                    <?php
+                                    if ($policies->num_rows > 0) {
+                                        while ($policy = $policies->fetch_assoc()) {
+                                            echo "<option value='" . htmlspecialchars($policy['id']) . "'>";
+                                            echo htmlspecialchars($policy['name']) . " - Renewal Date: " . htmlspecialchars($policy['renewal_date']);
+                                            echo "</option>";
+                                        }
+                                    } else {
+                                        echo "<option value='' >No available policies to renew</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="renewal_date" class="form-label">Current Renewal Date</label>
-                            <input type="text" class="form-control" id="renewal_date" name="renewal_date" value="<?= htmlspecialchars($policy['renewal_date']) ?>" disabled>
-                        </div>
-
+                    <div class="mt-4">
                         <button type="submit" class="btn btn-primary">Renew Policy</button>
-                    </form>
-
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </main>
-    <?php
-include '../includes/footer.php';
-?>
-    <!-- Bootstrap JS -->
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

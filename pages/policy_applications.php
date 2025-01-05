@@ -102,7 +102,7 @@ include '../includes/sidebar.php';
                                     echo "<td>" . htmlspecialchars($row['application_id']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['user_email']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['policy_name']) . "</td>";
-                                    echo "<td>$" . htmlspecialchars($row['policy_premium']) . "</td>";
+                                    echo "<td>₦" . htmlspecialchars($row['policy_premium']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['application_date']) . "</td>";
                                     echo "</tr>";
                                 }

@@ -88,3 +88,7 @@ renew_policy.php – Page for renewing expired or soon-to-expire policies.
 Files:
 styles.css – Main stylesheet for the website.
 admin.css – Styles specific to the admin panel.
+
+### Note
+- This is super beautiful, Kudos!!!!!!
+- Thank you sir
