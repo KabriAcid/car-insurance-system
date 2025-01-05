@@ -21,74 +21,129 @@
 }
 
 /* Class Definitions */
-.smoky-black { color: var(--smoky-black); }
-.yellow-green { color: var(--yellow-green); }
-.nyanza { color: var(--nyanza); }
-.ash-gray { color: var(--ash-gray); }
-.drab-dark-brown { color: var(--drab-dark-brown); }
+.smoky-black {
+  color: var(--smoky-black);
+}
+.yellow-green {
+  color: var(--yellow-green);
+}
+.nyanza {
+  color: var(--nyanza);
+}
+.ash-gray {
+  color: var(--ash-gray);
+}
+.drab-dark-brown {
+  color: var(--drab-dark-brown);
+}
 
-.bg-smoky-black { background-color: var(--smoky-black); }
-.bg-yellow-green { background-color: var(--yellow-green); }
-.bg-nyanza { background-color: var(--nyanza); }
-.bg-ash-gray { background-color: var(--ash-gray); }
-.bg-drab-dark-brown { background-color: var(--drab-dark-brown); }
+.bg-smoky-black {
+  background-color: var(--smoky-black);
+}
+.bg-yellow-green {
+  background-color: var(--yellow-green);
+}
+.bg-nyanza {
+  background-color: var(--nyanza);
+}
+.bg-ash-gray {
+  background-color: var(--ash-gray);
+}
+.bg-drab-dark-brown {
+  background-color: var(--drab-dark-brown);
+}
 
-.gray-100 { color: var(--gray-100); }
-.gray-200 { color: var(--gray-200); }
-.gray-300 { color: var(--gray-300); }
-.gray-400 { color: var(--gray-400); }
-.gray-500 { color: var(--gray-500); }
-.gray-600 { color: var(--gray-600); }
-.gray-700 { color: var(--gray-700); }
-.gray-800 { color: var(--gray-800); }
-.gray-900 { color: var(--gray-900); }
+.gray-100 {
+  color: var(--gray-100);
+}
+.gray-200 {
+  color: var(--gray-200);
+}
+.gray-300 {
+  color: var(--gray-300);
+}
+.gray-400 {
+  color: var(--gray-400);
+}
+.gray-500 {
+  color: var(--gray-500);
+}
+.gray-600 {
+  color: var(--gray-600);
+}
+.gray-700 {
+  color: var(--gray-700);
+}
+.gray-800 {
+  color: var(--gray-800);
+}
+.gray-900 {
+  color: var(--gray-900);
+}
 
-.bg-gray-100 { background-color: var(--gray-100); }
-.bg-gray-200 { background-color: var(--gray-200); }
-.bg-gray-300 { background-color: var(--gray-300); }
-.bg-gray-400 { background-color: var(--gray-400); }
-.bg-gray-500 { background-color: var(--gray-500); }
-.bg-gray-600 { background-color: var(--gray-600); }
-.bg-gray-700 { background-color: var(--gray-700); }
-.bg-gray-800 { background-color: var(--gray-800); }
-.bg-gray-900 { background-color: var(--gray-900); }
+.bg-gray-100 {
+  background-color: var(--gray-100);
+}
+.bg-gray-200 {
+  background-color: var(--gray-200);
+}
+.bg-gray-300 {
+  background-color: var(--gray-300);
+}
+.bg-gray-400 {
+  background-color: var(--gray-400);
+}
+.bg-gray-500 {
+  background-color: var(--gray-500);
+}
+.bg-gray-600 {
+  background-color: var(--gray-600);
+}
+.bg-gray-700 {
+  background-color: var(--gray-700);
+}
+.bg-gray-800 {
+  background-color: var(--gray-800);
+}
+.bg-gray-900 {
+  background-color: var(--gray-900);
+}
 
 /* COMPONENTS */
 
 /* Default Link */
 a {
-    color: var(--yellow-green);
-    text-decoration: none;
-    transition: color 0.3s, border-bottom 0.3s;
+  color: var(--yellow-green);
+  text-decoration: none;
+  transition: color 0.3s, border-bottom 0.3s;
 }
 
 /* Link Hover State */
 a:hover {
-    color: var(--smoky-black);
-    border-bottom: 1px solid var(--yellow-green);
+  color: var(--smoky-black);
+  border-bottom: 1px solid var(--yellow-green);
 }
 
 /* Link Active State */
 a:active {
-    color: var(--drab-dark-brown);
+  color: var(--drab-dark-brown);
 }
 
-
 .input-field {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    border: 1px solid var(--gray-400);
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid var(--gray-400);
+  border-radius: 5px;
 }
 
 .input-field:focus {
-    border-color: var(--yellow-green);
-    outline: none;
-    box-shadow: 0 0 5px rgba(133, 203, 51, 0.5);
-  }
-  
+  border-color: var(--yellow-green);
+  outline: none;
+  box-shadow: 0 0 5px rgba(133, 203, 51, 0.5);
+}
+
 .input-field:disabled {
   background-color: var(--gray-200);
   cursor: not-allowed;
@@ -111,19 +166,17 @@ a:active {
 }
 
 .btn-submit:disabled {
-    background-color: var(--gray-400);
-    color: var(--gray-100);
-    cursor: not-allowed;
+  background-color: var(--gray-400);
+  color: var(--gray-100);
+  cursor: not-allowed;
 }
 
 .header {
-    color: var(--gray-900);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    font-weight: 600;
+  color: var(--gray-900);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-weight: 600;
 }
-
-
 
 * {
   padding: 0;
@@ -132,8 +185,12 @@ a:active {
 }
 
 html {
-  font-family: Montserrat!important;
+  font-family: Montserrat !important;
 }
 body {
   background-color: var(--gray-200);
+}
+
+th:not(:first-child), td:not(:first-child) {
+  text-align: center;
 }

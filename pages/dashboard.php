@@ -77,9 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .table-responsive {
             max-width: 100%;
         }
-        th:not(:first-child) {
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -123,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         echo '<td>
                                             <form method="POST" action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '">
                                                 <input type="hidden" name="policy_id" value="' . htmlspecialchars($policy['id']) . '">
-                                                <button type="submit" class="btn btn-primary btn-sm">Apply</button>
+                                                <button type="submit" class="btn btn-primary btn-sm" id="submit" name="submit" onclick="makePayment()">Apply</button>
                                             </form>
                                         </td>';
                                         echo "</tr>";
@@ -141,7 +138,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include '../includes/footer.php';
+    // Six random digit number for transaction reference
+    $tx_ref = 'PAY_ID' . rand(100000, 999999);
+    require '../src/pages/keys.php';
+    ?>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script>
+        function makePayment() {
+            FlutterwaveCheckout({
+                public_key: "<?php echo $public_key ?>",
+                tx_ref: "<?php echo $tx_ref; ?>",
+                amount: document.getElementById('amount').value,
+                currency: "NGN",
+                payment_options: "card, ussd",
+                redirect_url: "../src/pages/redirect.php",
+                customer: {
+                    email: document.getElementById('email').value,
+                    // phone_number: document.getElementById('phone').value,
+                    name: "Abdullahi Kabri",
+                },
+                callback: function(data) {
+                    console.log(data);
+                },
+                customizations: {
+                    title: "Payment for Car Insurance App",
+                    description: "Payment for items in cart",
+                    logo: "favicon.svg",
+                },
+            });
+        }
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
