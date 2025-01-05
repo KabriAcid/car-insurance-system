@@ -6,7 +6,7 @@ require '../config/config.php';
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
     $_SESSION['message'] = "You must log in to apply for policies.";
-    header("Location: ../login.php");
+    header("Location: ../public/index.php");
     exit;
     $user = $_SESSION['user'];
 }
@@ -47,40 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/assets/css/style.css">
-    <style>
-        /* Flexbox layout for sidebar and main content */
-        .container-fluid {
-            display: flex;
-            min-height: 100vh;
-            padding-left: 0;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #343a40;
-            color: white;
-            padding-top: 50px;
-            padding-right: 10px;
-        }
-
-        /* Main content styles */
-        .main-content {
-            margin-left: 250px;
-            width: calc(100% - 250px);
-            /* Adjusting content to be beside sidebar */
-            padding-top: 50px;
-        }
-
-        /* Ensure table width doesn't overflow */
-        .table-responsive {
-            max-width: 100%;
-        }
-    </style>
 </head>
 
 <body>
@@ -121,9 +87,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         echo "<td>₦ " . htmlspecialchars($policy['premium']) . "</td>";
                                         echo "<td>" . htmlspecialchars($policy['coverage']) . "</td>";
                                         echo '<td>
-                                            <form method="POST" action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '">
+                                            <form method="POST" action="">
                                                 <input type="hidden" name="policy_id" value="' . htmlspecialchars($policy['id']) . '">
-                                                <button type="button" class="btn btn-primary btn-sm" id="submit" name="submit" onclick="makePayment()">Apply</button>
+                                                <button type="button" class="btn btn-sm btn-primary" id="submit" name="submit" onclick="makePayment()">Pay Now</button>
                                             </form>
                                         </td>';
                                         echo "</tr>";
@@ -136,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </tbody>
                         </table>
                     </div>
+                    <button type="button" class="btn btn-sm btn-primary" id="submit" name="submit" onclick="makePayment()">Pay Now</button>
                 </div>
             </div>
         </div>
@@ -151,16 +118,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script>
         function makePayment() {
             FlutterwaveCheckout({
-                public_key: "<?php echo $public_key ?>",
+                public_key: "<?php echo $public_key; ?>",
                 tx_ref: "<?php echo $tx_ref; ?>",
-                amount: "<?php $policy['premium'] ?>",
+                amount: "<?php echo $policy['premium']; ?>",
                 currency: "NGN",
                 payment_options: "card, ussd",
                 redirect_url: "../scripts/redirect.php",
                 customer: {
-                    email: "<?php echo $user['email'] ?>",
-                    phone_number: <?php echo $user['phone_number'] ?>,
-                    name: "<?php echo $user['first_name'] . ' ' . $user['last_name'] ?>",
+                    email: "<?php echo $user['email']; ?>",
+                    phone_number: <?php echo $user['phone_number']; ?>,
+                    name: "<?php echo $user['first_name'] . ' ' . $user['last_name']; ?>",
                 },
                 callback: function(data) {
                     console.log(data);

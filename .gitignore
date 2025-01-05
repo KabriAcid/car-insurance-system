@@ -47,4 +47,4 @@ public/css/*.min.css
 # Ignore user-generated content
 public/uploads/
 
-pages/keys.php
+scripts/keys.php

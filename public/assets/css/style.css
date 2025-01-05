@@ -191,6 +191,40 @@ body {
   background-color: var(--gray-200);
 }
 
-th:not(:first-child), td:not(:first-child) {
+th:not(:first-child),
+td:not(:first-child) {
   text-align: center;
+}
+
+/* Flexbox layout for sidebar and main content */
+.container-fluid {
+  display: flex;
+  min-height: 100vh;
+  padding-left: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #343a40;
+  color: white;
+  padding-top: 50px;
+  padding-right: 10px;
+}
+
+/* Main content styles */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  /* Adjusting content to be beside sidebar */
+  padding-top: 50px;
+}
+
+/* Ensure table width doesn't overflow */
+.table-responsive {
+  max-width: 100%;
 }

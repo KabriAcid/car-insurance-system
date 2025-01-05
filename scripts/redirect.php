@@ -3,10 +3,9 @@ require '../config/config.php';
 require 'keys.php';
 
 if (isset($_GET['transaction_id'])) {
-    $transactionId = $_GET['transaction_id']; // Extract the transaction ID
-    $status = $_GET['status']; // Extract the status
+    $transactionId = $_GET['transaction_id'];
+    $status = $_GET['status'];
 
-    // Now you can use the transaction ID to verify the payment
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
@@ -32,7 +31,6 @@ if (isset($_GET['transaction_id'])) {
     } else {
         $response_data = json_decode($response, true);
         if ($response_data['status'] == "success" && $response_data['data']['status'] == "successful") {
-            // Payment is successful, update your database
 
             $transactionId = $response_data['data']['id'];
             $amount = $response_data['data']['amount'];
@@ -42,11 +40,10 @@ if (isset($_GET['transaction_id'])) {
             $sql = "INSERT INTO transactions (transaction_id, amount, currency, customer_email, status) VALUES ('$transactionId', '$amount', '$currency', '$customerEmail', 'paid')";
 
             if ($conn->query($sql) === TRUE) {
-                // Display success message and redirect to dashboard.php after 5 seconds
-                echo "<h2 style='color:green';'text-align:center';>Payment successful! Redirecting to your dashboard...</h2>";
+                echo "<h2 style='color:green;';'text-align:center;';>Payment successful! Redirecting to your dashboard...</h2>";
                 echo "<script>
                         setTimeout(function() {
-                            window.location.href = 'dashboard.php';
+                            window.location.href = '../pages/dashboard.php';
                         }, 3000); // 3 seconds
                       </script>";
             } else {
@@ -55,7 +52,6 @@ if (isset($_GET['transaction_id'])) {
 
             $conn->close();
         } else {
-            // Payment is not successful
             echo "Payment verification failed! Response: " . print_r($response_data, true);
         }
     }
