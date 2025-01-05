@@ -2,11 +2,13 @@
 session_start();
 require '../config/config.php';
 
+
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
     $_SESSION['message'] = "You must log in to apply for policies.";
     header("Location: ../login.php");
     exit;
+    $user = $_SESSION['user'];
 }
 
 // Handle policy application
@@ -31,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['message'] = "Invalid policy selection.";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,6 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Six random digit number for transaction reference
     $tx_ref = 'PAY_ID' . rand(100000, 999999);
     require '../scripts/keys.php';
+
     ?>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
@@ -149,22 +153,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             FlutterwaveCheckout({
                 public_key: "<?php echo $public_key ?>",
                 tx_ref: "<?php echo $tx_ref; ?>",
-                amount: document.getElementById('amount').value,
+                amount: "<?php $policy['premium'] ?>",
                 currency: "NGN",
                 payment_options: "card, ussd",
-                redirect_url: "../src/pages/redirect.php",
+                redirect_url: "../scripts/redirect.php",
                 customer: {
-                    email: document.getElementById('email').value,
-                    // phone_number: document.getElementById('phone').value,
-                    name: "Abdullahi Kabri",
+                    email: "<?php echo $user['email'] ?>",
+                    phone_number: <?php echo $user['phone_number'] ?>,
+                    name: "<?php echo $user['first_name'] . ' ' . $user['last_name'] ?>",
                 },
                 callback: function(data) {
                     console.log(data);
                 },
                 customizations: {
                     title: "Payment for Car Insurance App",
-                    description: "Payment for items in cart",
-                    logo: "favicon.svg",
+                    description: "Payment for available policies",
+                    logo: "public/favicon.png",
                 },
             });
         }
