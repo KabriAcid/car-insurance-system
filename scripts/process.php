@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 
 // Sanitize and validate input
 function sanitize_input($data)

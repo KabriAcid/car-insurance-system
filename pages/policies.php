@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
@@ -68,7 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /* Main content styles */
         .main-content {
             margin-left: 250px;
-            width: calc(100% - 250px); /* Adjusting content to be beside sidebar */
+            width: calc(100% - 250px);
+            /* Adjusting content to be beside sidebar */
             padding-top: 50px;
         }
 

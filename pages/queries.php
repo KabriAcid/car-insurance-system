@@ -1,5 +1,7 @@
 <?php
-require '../config/config.php';
+require '../connection.php';
+require '../connection.php';
+
 
 $sql = "CREATE TABLE transactions (
     id INT AUTO_INCREMENT PRIMARY KEY,

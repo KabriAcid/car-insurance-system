@@ -53,13 +53,6 @@ require '../connection.php';
             bottom: 0;
             width: 100%;
         }
-
-        .table td.payment-success {
-            background-color: #d4edda;
-            text-transform: uppercase;
-            color: white;
-            font-weight: 500;
-        }
     </style>
 </head>
 

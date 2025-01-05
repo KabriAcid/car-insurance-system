@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 
 // Handle claim submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -62,7 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /* Main content styles */
         .main-content {
             margin-left: 250px;
-            width: calc(100% - 250px); /* Adjusting content to be beside sidebar */
+            width: calc(100% - 250px);
+            /* Adjusting content to be beside sidebar */
             padding-top: 50px;
         }
     </style>
