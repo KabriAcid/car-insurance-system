@@ -2,12 +2,12 @@
 session_start();
 require '../config/config.php';
 
-
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
     $_SESSION['message'] = "You must log in to apply for policies.";
     header("Location: ../public/index.php");
     exit;
+} else {
     $user = $_SESSION['user'];
 }
 
@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['message'] = "Invalid policy selection.";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,8 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         echo '<td>
                                             <form method="POST" action="">
                                                 <input type="hidden" name="policy_id" value="' . htmlspecialchars($policy['id']) . '">
-                                                <button type="button" class="btn btn-sm btn-primary" id="submit" name="submit" onclick="makePayment()">Pay Now</button>
                                             </form>
+                                            <button type="button" class="btn btn-sm btn-primary" onclick="makePayment(' . htmlspecialchars($policy['premium']) . ')">Pay Now</button>
                                         </td>';
                                         echo "</tr>";
                                     }
@@ -102,7 +101,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </tbody>
                         </table>
                     </div>
-                    <button type="button" class="btn btn-sm btn-primary" id="submit" name="submit" onclick="makePayment()">Pay Now</button>
                 </div>
             </div>
         </div>
@@ -112,22 +110,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Six random digit number for transaction reference
     $tx_ref = 'PAY_ID' . rand(100000, 999999);
     require '../scripts/keys.php';
-
     ?>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
-        function makePayment() {
+        function makePayment(premium) {
             FlutterwaveCheckout({
                 public_key: "<?php echo $public_key; ?>",
                 tx_ref: "<?php echo $tx_ref; ?>",
-                amount: "<?php echo $policy['premium']; ?>",
+                amount: premium,
                 currency: "NGN",
                 payment_options: "card, ussd",
                 redirect_url: "../scripts/redirect.php",
                 customer: {
                     email: "<?php echo $user['email']; ?>",
-                    phone_number: <?php echo $user['phone_number']; ?>,
-                    name: "<?php echo $user['first_name'] . ' ' . $user['last_name']; ?>",
+                    phone_number: "<?php echo $user['phone_number']; ?>",
+                    name: "<?php echo $user['first_name'] . ' ' . $user['last_name']; ?>"
                 },
                 callback: function(data) {
                     console.log(data);
@@ -135,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 customizations: {
                     title: "Payment for Car Insurance App",
                     description: "Payment for available policies",
-                    logo: "public/favicon.png",
+                    logo: "public/favicon.png"
                 },
             });
         }

@@ -4,12 +4,12 @@ require '../config/config.php';
 
 // Fetch current user details from the session
 if (!isset($_SESSION['user'])) {
-    header("Location: index.php");
+    header("Location: logout.php");
     exit();
 }
 
-$user_id = $_SESSION['user']['id'];
-$sql = "SELECT first_name, last_name, email FROM users WHERE id = ?";
+$user_id = $_SESSION['user']['user_id'];
+$sql = "SELECT first_name, last_name, email FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();

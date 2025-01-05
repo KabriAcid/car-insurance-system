@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 // Fetch the current user’s policies from the database
-$user_id = $_SESSION['user']['id'];  // Get user ID from session
+$user_id = $_SESSION['user']['user_id'];  // Get user ID from session
 $sql = "SELECT * FROM policies WHERE id= ?";  // Ensure 'user_id' exists in the table
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
