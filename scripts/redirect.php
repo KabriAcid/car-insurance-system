@@ -1,6 +1,7 @@
 <?php
 require '../config/config.php';
 require 'keys.php';
+session_start();
 
 if (isset($_GET['transaction_id'])) {
     $user_id = $_SESSION['user']['user_id'];
@@ -38,7 +39,7 @@ if (isset($_GET['transaction_id'])) {
             $currency = $response_data['data']['currency'];
             $customerEmail = $response_data['data']['customer']['email'];
 
-            $sql = "INSERT INTO transactions (user_id, transaction_id, amount, currency, customer_email, status) VALUES ('$user_id', '$transactionId', '$amount', '$currency', '$customerEmail', 'paid')";
+            $sql = "INSERT INTO transactions (user_id, transaction_id, amount, currency, customer_email, status) VALUES ('$user_id', '$transactionId', '$amount', '$currency', '$customerEmail', 'Paid')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "<h2 style='color:green;';'text-align:center;';>Payment successful! Redirecting to your dashboard...</h2>";
