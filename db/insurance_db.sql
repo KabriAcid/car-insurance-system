@@ -247,3 +247,6 @@ CREATE TABLE claims (
     claim_date DATETIME NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') DEFAULT 'user',
+INSERT INTO users (name, email, password, role) 
+VALUES ('Admin User', 'admin123@gmail.com', MD5('password123'), 'admin');
