@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 
 // Sanitize and validate input
 function sanitize_input($data)
@@ -97,9 +97,9 @@ if (isset($_POST['login'])) {
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <p class="text-center text-sm gray-800">Car Insurance System &copy; 2025 <a href="../pages/queries.php">Execute!</a></p>
+            <div class="mt-4">
+                <p class="text-center text-sm gray-800">Car Insurance System &copy; 2025 <a href="../pages/queries.php">Execute!</a></p>
+            </div>
         </div>
     </main>
 

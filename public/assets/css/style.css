@@ -19,6 +19,18 @@
   --gray-800: #343a40;
   --gray-900: #212529;
 }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Montserrat';
+}
+body {
+  background-color: var(--gray-200);
+}
 
 /* Class Definitions */
 .smoky-black {
@@ -176,19 +188,6 @@ a:active {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   font-weight: 600;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: Montserrat !important;
-}
-body {
-  background-color: var(--gray-200);
 }
 
 th:not(:first-child),

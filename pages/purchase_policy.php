@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {

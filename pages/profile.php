@@ -1,11 +1,11 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 
 // Fetch current user details from the session
 if (!isset($_SESSION['user'])) {
-    header("Location: logout.php");
-    exit();
+header("Location: logout.php");
+exit();
 }
 
 $user_id = $_SESSION['user']['user_id'];
@@ -16,44 +16,44 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+$user = $result->fetch_assoc();
 } else {
-    $_SESSION['message'] = "User not found.";
-    header("Location: dashboard.php");
-    exit();
+$_SESSION['message'] = "User not found.";
+header("Location: dashboard.php");
+exit();
 }
 
 // Update profile logic
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = htmlspecialchars($_POST['first_name']);
-    $last_name = htmlspecialchars($_POST['last_name']);
-    $email = htmlspecialchars($_POST['email']);
-    $password = $_POST['password'];
+$first_name = htmlspecialchars($_POST['first_name']);
+$last_name = htmlspecialchars($_POST['last_name']);
+$email = htmlspecialchars($_POST['email']);
+$password = $_POST['password'];
 
-    // Check if password is not empty, then hash it
-    if (!empty($password)) {
-        $password = password_hash($password, PASSWORD_BCRYPT);
-        $update_sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ? WHERE id = ?";
-        $stmt = $conn->prepare($update_sql);
-        $stmt->bind_param("ssssi", $first_name, $last_name, $email, $password, $user_id);
-    } else {
-        // Only update name and email if password is not provided
-        $update_sql = "UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
-        $stmt = $conn->prepare($update_sql);
-        $stmt->bind_param("sssi", $first_name, $last_name, $email, $user_id);
-    }
+// Check if password is not empty, then hash it
+if (!empty($password)) {
+$password = password_hash($password, PASSWORD_BCRYPT);
+$update_sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ? WHERE id = ?";
+$stmt = $conn->prepare($update_sql);
+$stmt->bind_param("ssssi", $first_name, $last_name, $email, $password, $user_id);
+} else {
+// Only update name and email if password is not provided
+$update_sql = "UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
+$stmt = $conn->prepare($update_sql);
+$stmt->bind_param("sssi", $first_name, $last_name, $email, $user_id);
+}
 
-    if ($stmt->execute()) {
-        $_SESSION['user']['first_name'] = $first_name;
-        $_SESSION['user']['last_name'] = $last_name;
-        $_SESSION['user']['email'] = $email;
-        $_SESSION['message'] = "Profile updated successfully!";
-    } else {
-        $_SESSION['message'] = "Error updating profile: " . $stmt->error;
-    }
+if ($stmt->execute()) {
+$_SESSION['user']['first_name'] = $first_name;
+$_SESSION['user']['last_name'] = $last_name;
+$_SESSION['user']['email'] = $email;
+$_SESSION['message'] = "Profile updated successfully!";
+} else {
+$_SESSION['message'] = "Error updating profile: " . $stmt->error;
+}
 
-    header("Location: profile.php");
-    exit();
+header("Location: profile.php");
+exit();
 }
 ?>
 
@@ -72,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         /* Ensure the footer stays at the bottom */
         body {
-            margin-left: 250px; /* Adjust this value according to the sidebar width */
+            margin-left: 250px;
+            /* Adjust this value according to the sidebar width */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -95,9 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<?php
-include '../includes/sidebar.php';
-?>
+    <?php
+    include '../includes/sidebar.php';
+    ?>
     <main class="container-fluid py-5 bg-light">
         <div class="container p-5">
             <div class="row">
@@ -140,8 +141,8 @@ include '../includes/sidebar.php';
         </div>
     </main>
     <?php
-include '../includes/footer.php';
-?>
+    include '../includes/footer.php';
+    ?>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

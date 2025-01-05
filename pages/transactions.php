@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php';
+require '../connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,7 @@ require '../config/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transactions</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/assets/css/style.css">
     <style>
         /* Adjust the left margin to make space for the sidebar */
         body {
@@ -120,7 +121,7 @@ require '../config/config.php';
                                     echo "<td>" . htmlspecialchars($row['currency']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['customer_email']) . "</td>";
                                     echo "<td class='$paymentSuccess'>" . htmlspecialchars($row['status']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                                    echo "<td>" . htmlspecialchars(date('D-m-Y H:m:s', strtotime($row['created_at']))) . "</td>";
                                     echo "</tr>";
                                 }
                             } else {
