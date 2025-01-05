@@ -1,5 +1,3 @@
-# car-insurance-web
-
 Car Insurance Management system
 
 # ERD
@@ -90,4 +88,5 @@ styles.css – Main stylesheet for the website.
 admin.css – Styles specific to the admin panel.
 
 ### Note
-- To avoid future conflicts with the database configuration file I have successfully installed the ``phpdotenv`` package, where all the secret keys are created in the .env file. Go ahead and run the ``composer install`` function in your terminal
+- This is super beautiful, Kudos!!!!!!
+- Thank you sir
