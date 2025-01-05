@@ -1,5 +1,3 @@
-# car-insurance-System
-
 Car Insurance Management system
 
 # ERD
