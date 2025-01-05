@@ -48,3 +48,4 @@ public/css/*.min.css
 public/uploads/
 
 scripts/keys.php
+/vendor/
