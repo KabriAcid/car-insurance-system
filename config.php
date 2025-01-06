@@ -15,11 +15,6 @@ $dbUser = $_ENV['DATABASE_USER'];
 $dbName = $_ENV['DATABASE_NAME'];
 $dbPassword = $_ENV['DATABASE_PASSWORD'];
 
-
-if(!$dbHost || !$dbUser || !$dbName || !$dbPassword){
-    echo "Incorrect variables set.";
-}
-
 // Example: Use the variables to connect to a database
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 if ($conn->connect_error) {
