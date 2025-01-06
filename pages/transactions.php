@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../connection.php';
+require '../config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

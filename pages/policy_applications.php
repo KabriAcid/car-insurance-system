@@ -1,5 +1,5 @@
 <?php session_start();
-require '../connection.php'; ?>
+require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +8,7 @@ require '../connection.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Policy Applications</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/assets/css/style.css">
     <style>
         /* Adjust the left margin to make space for the sidebar */
         body {

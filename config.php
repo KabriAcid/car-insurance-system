@@ -6,20 +6,22 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // Access environment variables
-$publicKey = getenv('PUBLIC_KEY');
-$secretKey = getenv('SECRET_KEY');
-$encryptionKey = getenv('ENCRYPTION_KEY');
+$publicKey = $_ENV['PUBLIC_KEY'];
+$secretKey = $_ENV['SECRET_KEY'];
+$encryptionKey = $_ENV['ENCRYPTION_KEY'];
 
-$dbHost = getenv('DATABASE_HOST');
-$dbUser = getenv('DATABASE_USER');
-$dbName = getenv('DATABASE_NAME');
-$dbPassword = getenv('DATABASE_PASSWORD');
+$dbHost = $_ENV['DATABASE_HOST'];
+$dbUser = $_ENV['DATABASE_USER'];
+$dbName = $_ENV['DATABASE_NAME'];
+$dbPassword = $_ENV['DATABASE_PASSWORD'];
+
+
+if(!$dbHost || !$dbUser || !$dbName || !$dbPassword){
+    echo "Incorrect variables set.";
+}
 
 // Example: Use the variables to connect to a database
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-// Use API keys as needed
-echo "Public Key: " . $publicKey;
