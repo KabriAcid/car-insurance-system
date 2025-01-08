@@ -5,8 +5,8 @@ $encryptionKey = 'FLWSECK_TESTe18775b64e08';
 
 $dbHost = 'localhost';
 $dbUser = 'root';
-$dbName = 'insurance_db';
-$dbPassword = '';
+$dbName = 'scheema';
+$dbPassword = 'Moussamj9$';
 
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 if ($conn->connect_error) {

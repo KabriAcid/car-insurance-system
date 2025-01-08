@@ -72,7 +72,7 @@ require '../connection.php'; ?>
                     </thead>
                     <tbody> <?php
                             //  SQL query to fetch policy applications 
-                            $sql = "SELECT pa.id AS application_id, u.email AS user_email, p.name AS policy_name, p.premium AS policy_premium, pa.application_date FROM policy_applications pa INNER JOIN users u ON pa.user_id = u.user_id INNER JOIN policies p ON pa.policy_id = p.id";
+                            $sql = "SELECT pa.id AS application_id, u.email AS user_email, p.name AS policy_name, p.premium AS policy_premium, pa.application_date FROM policy_applications pa INNER JOIN users u ON pa.id = u.id INNER JOIN policies p ON pa.policy_id = p.id";
                             //  Execute the query
                             if ($result = $conn->query($sql)) {
                                 //  Check if there are any results and display them

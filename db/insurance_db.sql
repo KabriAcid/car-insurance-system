@@ -581,3 +581,40 @@ COMMIT;
 
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
 ;
+CREATE TABLE policies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    premium DECIMAL(10, 2) NOT NULL,
+    coverage VARCHAR(100) NOT NULL
+);
+CREATE TABLE purchase_policy (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO policies ( name, description, premium, coverage) VALUES
+( 'Basic Plan', 'Covers minimal accidents and injuries', 100.00, 'Up to ₦5,000'),
+( 'Standard Plan', 'Covers accidents and property damage', 200.00, 'Up to ₦15,000'),
+( 'Premium Plan', 'Covers all risks including theft and fire', 500.00, 'Up to ₦50,000');
+
+CREATE TABLE policy_applications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    policy_id INT NOT NULL,
+    application_date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (policy_id) REFERENCES policies(id)
+);
+CREATE TABLE claims (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    policy_number VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    claim_date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') DEFAULT 'user',
+INSERT INTO users (name, email, password, role) 
+VALUES ('Admin User', 'admin123@gmail.com', MD5('password123'), 'admin');

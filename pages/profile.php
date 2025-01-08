@@ -8,8 +8,8 @@ header("Location: logout.php");
 exit();
 }
 
-$user_id = $_SESSION['user']['user_id'];
-$sql = "SELECT first_name, last_name, email FROM users WHERE user_id = ?";
+$user_id = $_SESSION['user']['id'];
+$sql = "SELECT first_name, last_name, email FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
