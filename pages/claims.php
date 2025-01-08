@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../connection.php';
+require '../config.php';
 
 // Handle claim submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
